@@ -17,7 +17,7 @@ public class UserController {
 
     private final UserRepository userRepository;
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<User>> getAllUsers() {
         List<com.example.backend.entity.User> users = userRepository.findAll();
         return ResponseEntity.ok(users);

@@ -1,5 +1,7 @@
 package com.example.backend.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,4 +18,5 @@ public class Message {
     private String sender;
     private String receiver;
     private String text;
+    private LocalDateTime timeStamp;
 }
