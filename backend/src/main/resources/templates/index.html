@@ -141,7 +141,7 @@
             .then(data => {
                 const messageList = document.getElementById('message-list');
                 messageList.innerHTML = '';
-                data.forEach(message => showMessageOutput(message));
+                data.reverse().forEach(message => showMessageOutput(message)); // Reverse messages here
             });
         }
 
