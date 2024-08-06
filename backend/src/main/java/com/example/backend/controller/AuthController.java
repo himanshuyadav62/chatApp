@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.entity.Role;
 import com.example.backend.entity.User;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.security.JwtTokenProvider;
@@ -42,7 +43,7 @@ public class AuthController {
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity.badRequest().body("Email is already taken!");
         }
-
+        signUpRequest.setRole(Role.USER);
         signUpRequest.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
         User result = userRepository.save(signUpRequest);
         return ResponseEntity.ok(result);

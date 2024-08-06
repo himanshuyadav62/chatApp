@@ -11,13 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backend.entity.Message;
 import com.example.backend.entity.User;
 import com.example.backend.repository.MessageRepository;
 import com.example.backend.repository.UserRepository;
 
-@Controller
+@RestController
 @RequestMapping("/api")
 public class ChatController {
     
@@ -59,4 +60,10 @@ public class ChatController {
         List<Message> messages = messageRepository.findBySenderAndReceiverOrderByTimeStampDesc(currentUserEmail, user);
         return ResponseEntity.ok(messages);
     }
+
+    @GetMapping("/admin/users")
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+    
 }
